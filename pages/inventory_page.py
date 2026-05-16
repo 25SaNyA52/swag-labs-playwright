@@ -8,7 +8,7 @@ class InventoryPage(BasePage):
     INVENTORY_ITEMS = ".inventory_item"
     ITEM_NAMES = ".inventory_item_name"
     ITEM_PRICES = ".inventory_item_price"
-    SORT_DROPDOWN = "[data-test='product_sort_container']"
+    SORT_DROPDOWN = "[data-test='product-sort-container']"
     CART_BADGE = ".shopping_cart_badge"
     CART_LINK = ".shopping_cart_link"
     HAMBURGER_MENU = "#react-burger-menu-btn"
@@ -27,7 +27,7 @@ class InventoryPage(BasePage):
         return self.page.locator(self.ITEM_PRICES).all_inner_texts()
 
     def sort_by(self, option_value: str):
-        self.page.select_option(self.SORT_DROPDOWN, option_value)
+        self.page.locator(self.SORT_DROPDOWN).select_option(value=option_value)
 
     def add_product_to_cart_by_name(self, name: str):
         item = self.page.locator(self.INVENTORY_ITEMS).filter(has_text=name)
